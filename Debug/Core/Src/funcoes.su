@@ -1,2 +1,4 @@
-funcoes.c:10:8:pressostato	16	static
-funcoes.c:15:6:bomba	24	static
+funcoes.c:11:8:pressostato	16	static
+funcoes.c:16:6:bomba	24	static
+funcoes.c:49:6:aquecer	48	static
+funcoes.c:80:6:calibrar	8	static
