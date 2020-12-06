@@ -5,12 +5,10 @@
  *      Author: andre
  */
 #include "funcoes.h"
-#include "main.h"
 
 
-int8_t pressostato(void){
-	int8_t pressostato = HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_11);
-	return pressostato;
+void pressostatoFiltro(void){
+	presF= HAL_GPIO_ReadPin(GPIOB, P1);
 }
 
 void bomba(int8_t tipo){
@@ -24,7 +22,7 @@ void bomba(int8_t tipo){
 			contador +=10;
 			HAL_Delay(1);
 		}
-		HAL_Delay(capsula[tipo].tempo);
+		HAL_Delay(capsula[tipo-1].tempo);
 		for(i=0; i<250;i++){
 			TIM2->CCR1 = contador;
 			contador -=8;
@@ -47,7 +45,7 @@ void bomba(int8_t tipo){
 
 void aquecer(int32_t temperatura){
 	int8_t i, j;
-	int32_t adc1, t1, t2, t1f, erro;
+	int32_t adc1, t1=0, t1f=0, erro;
 	int32_t pwm = 1000, kp =18;
 	do{
 		for(i=0; i<4; i++){
@@ -55,7 +53,7 @@ void aquecer(int32_t temperatura){
 			while(!flag);
 			flag = 1;
 			adc1=0;
-			for(j=0; j <NUMBER_OF_CONVERSION; j++){
+			for(j=0; j <NUMBER_OF_CONVERSION/2; j++){
 				adc1+= adcData[i];
 			}
 			adc1/= (NUMBER_OF_CONVERSION/2);
@@ -64,11 +62,41 @@ void aquecer(int32_t temperatura){
 		t1 /= 4;
 		t1f = t1*graus+5; //testar o maximo
 		if(t1f>100)t1f = 100;
-		erro = t1f - temperatura ;
+		erro = temperatura - t1f;
 		if(erro > 0){
 			TIM2->CCR2 = pwm+(erro*kp);
 		}
+		HAL_Delay(50);
 	}while(t1f < temperatura);
+	TIM2->CCR2 =0; //???
+	aquecido = 1;
+}
+
+void resfriar(int32_t temperatura){
+	int8_t i, j;
+	int32_t adc2, t2, t2f, erro;
+	int32_t pwm = 100, kp =2;
+	do{
+		for(i=0; i<4; i++){
+			HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSION);
+			while(!flag);
+			flag = 1;
+			adc2=0;
+			for(j=0; j <NUMBER_OF_CONVERSION/2; j++){
+				adc2+= adcData[i+8];
+			}
+			adc2/= (NUMBER_OF_CONVERSION/2);
+			t2=adc2;
+		}
+		t2 /= 4;
+		t2f = t2*graus+5; //testar o maximo
+		if(t2f>50)t2f = 50;
+		erro = t2f - temperatura;
+		if(erro > 0){
+			TIM2->CCR2 = pwm+(erro*kp);
+		}
+		HAL_Delay(50);
+	}while(t2f > temperatura);
 	TIM2->CCR2 =0; //???
 	aquecido = 1;
 }
@@ -78,6 +106,8 @@ void calibrar (void){
 }
 
 void iniciar(void){
+
+
 	//Água natural em temperatura ambiente
 	strcpy(capsula[0].nome, "ÁGUA");
 	capsula[0].temperatura = 0;
@@ -95,7 +125,7 @@ void iniciar(void){
 	capsula[1].gast =0; // sem gas
 
 	//Água natural resfriada
-	strcpy(capsula[0].nome, "ÁGUA GELADA");
+	strcpy(capsula[2].nome, "ÁGUA GELADA");
 	capsula[2].temperatura = 15;
 	capsula[2].tempo = 2550; //tempo em ms com o tempo da bomba diminuido
 	capsula[2].gas = 0; //sem gas

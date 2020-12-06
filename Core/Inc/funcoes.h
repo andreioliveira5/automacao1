@@ -6,55 +6,72 @@
  */
 #include <stdint.h>
 #include <stdbool.h>
-#include <stdint.h>
 #include <ctype.h>
-#include <string.h>
 #include <stdlib.h>
+#include <stdio.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+#include <time.h>
+#include <string.h>
 #include "main.h"
 
 #ifndef INC_FUNCOES_H_
 #define INC_FUNCOES_H_
+typedef struct capsulas{
+
+	char nome[15]; //Nome para exibir no display
+	int32_t temperatura; //temperatura para o controlador
+	float tempo; //tempo em ms subtraido do tempo da bomba e do gas em bebidas gaseificadas
+	uint8_t gas; //0 sem gas 1 com gas;
+	int16_t tipo; //temperatura 0 natural 1 quente 2 fria
+	float gast; // tempo do gas
+
+}capsulas;
+
+
 #endif /* INC_FUNCOES_H_ */
 
 /*-----Defines utilizados----*/
+
 #define NUMBER_OF_CONVERSION 16
-#define graus ((3.3/4095)*0.005)
+#define graus ((3.3/4095)/0.005)
+
+#define P1  GPIO_PIN_11 // PRESSOSTATO DA SAIDA DE AGUA - PORTA B11
+#define Y3  GPIO_PIN_5 //VALVULA DE AGUA NATURAL SEM AQUECIMENTO OU RESFRIAMENTO - PORTA A5
+#define SAIDA  GPIO_PIN_10 //SAIDA DO SISTEMA - PORTA B10
+#define Y1  GPIO_PIN_3 //valvula y1 - porta A3
 
 //variaveis do DMA
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;;
 
 //variaveis globais de definição;
-typedef struct {
-	char nome[15];
-	int32_t temperatura;
-	float tempo;
-	uint8_t gas;
-	int16_t tipo;
-	float gast;
-}tipo_capsula;
+
 
 int32_t Vsense;
 float temperatura;
 uint8_t flag;
 uint32_t adcData[NUMBER_OF_CONVERSION];
 int8_t aquecido;
+int8_t presF;
 
-tipo_capsula capsula[8];
+
+capsulas capsula[8];
 
 //variais para usar nas funções de entrada e saida
-int16_t P1 = GPIO_PIN_11; // PRESSOSTATO DA SAIDA DE AGUA - PORTA B11
-int16_t Y3 = GPIO_PIN_5; //VALVULA DE AGUA NATURAL SEM AQUECIMENTO OU RESFRIAMENTO - PORTA A5
-int16_t SAIDA = GIOP_PIN_10 //SAIDA DO SISTEMA - PORTA B10
 
 
-int8_t pressostato(void);
+/*
+ * Descição das funções
+ */
+void pressostatoFiltro(void);
 
 void bomba(int8_t tipo);
 
-void aquecer(void);
+void aquecer(int32_t temperatura);
 
-void resfriar(void);
+void resfriar(int32_t temperatura);
 
 void calibrar(void);
 

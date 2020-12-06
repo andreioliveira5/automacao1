@@ -1,4 +1,6 @@
-funcoes.c:11:8:pressostato	16	static
-funcoes.c:16:6:bomba	24	static
-funcoes.c:49:6:aquecer	48	static
-funcoes.c:80:6:calibrar	8	static
+funcoes.c:10:6:pressostatoFiltro	8	static
+funcoes.c:14:6:bomba	24	static
+funcoes.c:46:6:aquecer	56	static
+funcoes.c:75:6:resfriar	56	static
+funcoes.c:104:6:calibrar	8	static
+funcoes.c:108:6:iniciar	8	static

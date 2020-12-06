@@ -1,1 +1,3 @@
-aguasNaturais.c:18:6:aguaNatural	16	static
+aguasNaturais.c:12:6:aguaNatural	8	static
+aguasNaturais.c:25:6:aguaQuente	8	static
+aguasNaturais.c:39:6:aguaGelada	4	static

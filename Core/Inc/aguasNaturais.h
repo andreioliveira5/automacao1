@@ -8,7 +8,6 @@
 #ifndef INC_AGUASNATURAIS_H_
 #define INC_AGUASNATURAIS_H_
 #include "funcoes.h"
-#include "main.h"
 
 
 #endif /* INC_AGUASNATURAIS_H_ */
