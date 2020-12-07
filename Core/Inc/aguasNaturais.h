@@ -17,3 +17,7 @@ void aguaNatural(void);
 void aguaQuente(void);
 
 void aguaGelada(void);
+
+void chaGelado(void);
+
+void chaQuente(void);

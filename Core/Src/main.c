@@ -106,11 +106,11 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   calibrar();
   iniciar();
-  aguaGelada();
+  chaGelado();
   HAL_Delay(1000);
-  aguaQuente();
+  chaQuente();
   HAL_Delay(1000);
-  aguaNatural();
+
   /* USER CODE END 2 */
 
   /* Infinite loop */

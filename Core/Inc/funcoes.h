@@ -78,3 +78,4 @@ void calibrar(void);
 
 void iniciar(void);
 
+void pressostadoCO2(void);

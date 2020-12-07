@@ -4,7 +4,6 @@
  *  Created on: 30 de nov de 2020
  *      Author: andre
  */
-//#include "funcoes.h"
 
 #include "aguasNaturais.h"
 
@@ -39,7 +38,31 @@ void aguaGelada(void){
 		}else{
 			resfriar(capsula[2].temperatura);
 			HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
-			bomba(1);
+			bomba(2);
 			HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
 		}
+}
+
+void chaGelado(void){
+	pressostatoFiltro();
+	if(presF ==0){
+
+	}else{
+		resfriar(capsula[4].temperatura);
+		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
+		bomba(4);
+		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
+	}
+}
+
+void chaQuente(void){
+	pressostatoFiltro();
+	if(presF ==0){
+
+	}else{
+		aquecer(capsula[5].temperatura);
+		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_SET);
+		bomba(5);
+		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_RESET);
+	}
 }
