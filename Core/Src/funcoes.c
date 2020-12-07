@@ -149,10 +149,34 @@ void iniciar(void){
 	capsula[6].temperatura = 17;
 	capsula[6].tempo = (3550-2360); //4S - 450 MS DA BOMBA - TEMPO DO GAS
 	capsula[6].gas = 0;
-	capsula[6].tipo = 0;
+	capsula[6].tipo = 2;
 	capsula[6].gast =2360;
 }
 
+void pressostadoCO2(void){
+	presCO2= HAL_GPIO_ReadPin(GPIOA, P2);
+}
 
+void bombaGas(int8_t tipo){
+	int16_t i;
+		int16_t contador = 0;
 
+		HAL_GPIO_WritePin(GPIOA, Y4, GPIO_PIN_SET);
+		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_SET);
+		for(i=0; i < 200; i++){// aceleração
+			TIM2->CCR1 = contador;
+			contador +=10;
+			HAL_Delay(1);
+		}
+		HAL_Delay(capsula[tipo].gast);
+		HAL_GPIO_WritePin(GPIOA, Y4, GPIO_PIN_RESET);
+		HAL_Delay(capsula[tipo].tempo);
+
+		for(i=0; i<250;i++){
+			TIM2->CCR1 = contador;
+			contador -=8;
+			HAL_Delay(1);
+		}
+		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
+	}
 

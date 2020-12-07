@@ -42,7 +42,8 @@ typedef struct capsulas{
 #define SAIDA  GPIO_PIN_10 //SAIDA DO SISTEMA - PORTA B10
 #define Y1  GPIO_PIN_3 //valvula y1 - porta A3
 #define Y2 GPIO_PIN_4 // VALVULA Y2 - PORTA A4
-
+#define P2 GPIO_PIN_6 //PRESSOSTADO DO CO2
+#define Y4 GPIO_PIN_7 //VALVULA Y4 CO2
 //variaveis do DMA
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;;
@@ -55,7 +56,7 @@ float temperatura;
 uint8_t flag;
 uint32_t adcData[NUMBER_OF_CONVERSION];
 int8_t aquecido;
-int8_t presF;
+int8_t presF, presCO2;
 
 
 capsulas capsula[8];
@@ -79,3 +80,5 @@ void calibrar(void);
 void iniciar(void);
 
 void pressostadoCO2(void);
+
+void bombaGas(int8_t tipo);
