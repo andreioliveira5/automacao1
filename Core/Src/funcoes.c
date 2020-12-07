@@ -11,36 +11,24 @@ void pressostatoFiltro(void){
 	presF= HAL_GPIO_ReadPin(GPIOB, P1);
 }
 
+//bebidas sem gas
 void bomba(int8_t tipo){
 	int16_t i;
 	int16_t contador = 0;
-	switch(tipo){
-	case(1): // água natural
 
+		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_SET);
 		for(i=0; i < 200; i++){// aceleração
 			TIM2->CCR1 = contador;
 			contador +=10;
 			HAL_Delay(1);
 		}
-		HAL_Delay(capsula[tipo-1].tempo);
+		HAL_Delay(capsula[tipo].tempo);
 		for(i=0; i<250;i++){
 			TIM2->CCR1 = contador;
 			contador -=8;
 			HAL_Delay(1);
 		}
-		break;
-	case(2): //Água gelada
-		break;
-	case(3): //Água quente
-		break;
-	case(4): //Água com gás
-		break;
-	case(5): //Chá gelado
-		break;
-	case(6)://Chá Quente
-		break;
-
-	}
+		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
 }
 
 void aquecer(int32_t temperatura){
@@ -93,11 +81,11 @@ void resfriar(int32_t temperatura){
 		if(t2f>50)t2f = 50;
 		erro = t2f - temperatura;
 		if(erro > 0){
-			TIM2->CCR2 = pwm+(erro*kp);
+			TIM2->CCR3 = pwm+(erro*kp);
 		}
 		HAL_Delay(50);
 	}while(t2f > temperatura);
-	TIM2->CCR2 =0; //???
+	TIM2->CCR3 =0; //???
 	aquecido = 1;
 }
 
@@ -141,28 +129,28 @@ void iniciar(void){
 	capsula[3].gast =1300; //1,5 SEGUNDOS - 200 MS DA BOMBA
 
 	//Chá gelado
-	strcpy(capsula[3].nome, "CHÁ GELADO");
-	capsula[3].temperatura = 20;
-	capsula[3].tempo = 2250; //2,7 segundos - 450 ms da bomba
-	capsula[3].gas = 0; //SEM GAS
-	capsula[3].tipo = 2; // GELADA
-	capsula[3].gast =0; // SEM GAS
+	strcpy(capsula[4].nome, "CHÁ GELADO");
+	capsula[4].temperatura = 20;
+	capsula[4].tempo = 2250; //2,7 segundos - 450 ms da bomba
+	capsula[4].gas = 0; //SEM GAS
+	capsula[4].tipo = 2; // GELADA
+	capsula[4].gast =0; // SEM GAS
 
 	//Chá quente
-	strcpy(capsula[4].nome, "CHÁ QUENTE");
-	capsula[4].temperatura = 60;
-	capsula[4].tempo = 2250; //2,7S -450 MS DA BOMBA
-	capsula[4].gas = 0;
-	capsula[4].tipo = 1;// QUENTE
-	capsula[4].gast =0;
+	strcpy(capsula[5].nome, "CHÁ QUENTE");
+	capsula[5].temperatura = 60;
+	capsula[5].tempo = 2250; //2,7S -450 MS DA BOMBA
+	capsula[5].gas = 0;
+	capsula[5].tipo = 1;// QUENTE
+	capsula[5].gast =0;
 
 	//Refrigerante
-	strcpy(capsula[5].nome, "REFRIGERANTE");
-	capsula[5].temperatura = 17;
-	capsula[5].tempo = (3550-2360); //4S - 450 MS DA BOMBA - TEMPO DO GAS
-	capsula[5].gas = 0;
-	capsula[5].tipo = 0;
-	capsula[5].gast =2360;
+	strcpy(capsula[6].nome, "REFRIGERANTE");
+	capsula[6].temperatura = 17;
+	capsula[6].tempo = (3550-2360); //4S - 450 MS DA BOMBA - TEMPO DO GAS
+	capsula[6].gas = 0;
+	capsula[6].tipo = 0;
+	capsula[6].gast =2360;
 }
 
 

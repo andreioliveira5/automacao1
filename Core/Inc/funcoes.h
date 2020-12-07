@@ -41,6 +41,7 @@ typedef struct capsulas{
 #define Y3  GPIO_PIN_5 //VALVULA DE AGUA NATURAL SEM AQUECIMENTO OU RESFRIAMENTO - PORTA A5
 #define SAIDA  GPIO_PIN_10 //SAIDA DO SISTEMA - PORTA B10
 #define Y1  GPIO_PIN_3 //valvula y1 - porta A3
+#define Y2 GPIO_PIN_4 // VALVULA Y2 - PORTA A4
 
 //variaveis do DMA
 ADC_HandleTypeDef hadc1;

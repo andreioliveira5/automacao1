@@ -15,10 +15,8 @@ void aguaNatural(void){
 
 	}else{
 		HAL_GPIO_WritePin(GPIOA, Y3, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_SET);
-		bomba(1);
+		bomba(0);
 		HAL_GPIO_WritePin(GPIOA, Y3, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
 	}
 }
 
@@ -27,15 +25,21 @@ void aguaQuente(void){
 	if(presF == 0){
 
 	}else{
-		HAL_GPIO_WritePin(GPIOA, Y3, GPIO_PIN_SET);
-		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_SET);
+		aquecer(capsula[1].temperatura);
+		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_SET);
 		bomba(1);
-		HAL_GPIO_WritePin(GPIOA, Y3, GPIO_PIN_RESET);
-		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
+		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_RESET);
 	}
 }
 
-
 void aguaGelada(void){
+	pressostatoFiltro();
+		if(presF == 0){
 
+		}else{
+			resfriar(capsula[2].temperatura);
+			HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
+			bomba(1);
+			HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
+		}
 }
