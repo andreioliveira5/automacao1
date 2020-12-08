@@ -24,6 +24,7 @@
 /* USER CODE BEGIN Includes */
 #include "aguasNaturais.h"
 #include "funcoes.h"
+#include "bebidasGaseificadas.h"
 #include <stdio.h>
 /* USER CODE END Includes */
 
@@ -106,11 +107,9 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   calibrar();
   iniciar();
-  chaGelado();
+  aguaComGas();
   HAL_Delay(1000);
-  chaQuente();
-  HAL_Delay(1000);
-
+  refrigerante();
   /* USER CODE END 2 */
 
   /* Infinite loop */

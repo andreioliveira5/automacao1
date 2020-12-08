@@ -34,7 +34,7 @@ void bomba(int8_t tipo){
 void aquecer(int32_t temperatura){
 	int8_t i, j;
 	int32_t adc1, t1=0, t1f=0, erro;
-	int32_t pwm = 1000, kp =18;
+	int32_t pwm = 500, kp =27;
 	do{
 		for(i=0; i<4; i++){
 			HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSION);
@@ -63,7 +63,7 @@ void aquecer(int32_t temperatura){
 void resfriar(int32_t temperatura){
 	int8_t i, j;
 	int32_t adc2, t2, t2f, erro;
-	int32_t pwm = 100, kp =2;
+	int32_t pwm = 50, kp =4;
 	do{
 		for(i=0; i<4; i++){
 			HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSION);

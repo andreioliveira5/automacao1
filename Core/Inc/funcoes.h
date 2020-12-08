@@ -9,8 +9,6 @@
 #include <ctype.h>
 #include <stdlib.h>
 #include <stdio.h>
-#include <stdio.h>
-#include <stdlib.h>
 #include <locale.h>
 #include <time.h>
 #include <string.h>
@@ -18,6 +16,7 @@
 
 #ifndef INC_FUNCOES_H_
 #define INC_FUNCOES_H_
+#include "telas.h"
 typedef struct capsulas{
 
 	char nome[15]; //Nome para exibir no display

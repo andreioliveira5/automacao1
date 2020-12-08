@@ -1,0 +1,9 @@
+display.c:77:6:tempo	8	static
+display.c:90:6:inicializa	8	static
+display.c:113:6:instrucoes	32	static
+display.c:150:6:conversorB	24	static
+display.c:168:6:caracteres_especiais	24	static
+display.c:183:6:limpar	8	static
+display.c:193:6:escreve_char	32	static
+display.c:228:6:escreve_string	24	static
+display.c:258:6:variaveis	40	static
