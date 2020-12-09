@@ -1,2 +1,6 @@
 telas.c:9:6:aquecendo	16	static
 telas.c:16:6:resfriando	16	static
+telas.c:23:6:menuAgua	8	static
+telas.c:33:6:capsulaEscolhida	16	static
+telas.c:142:6:filtroSaturado	8	static
+telas.c:163:6:CO2Saturado	8	static

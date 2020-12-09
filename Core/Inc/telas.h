@@ -10,6 +10,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "display.h"
+#include "funcoes.h"
 
 #endif /* INC_TELAS_H_ */
 
@@ -23,7 +24,7 @@ void misturando(void);
 
 void confirmacao(void);
 
-void capsulaEscolhida(void);
+void capsulaEscolhida(int8_t tipo);
 
 void final(void);
 

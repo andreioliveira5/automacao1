@@ -106,11 +106,13 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   inicializa();
-  limpar();
- aquecendo(60);
- HAL_Delay(2000);
-  limpar();
- resfriando(20);
+  iniciar();
+  capsulaEscolhida(1);
+  capsulaEscolhida(2);
+  capsulaEscolhida(3);
+  capsulaEscolhida(4);
+  capsulaEscolhida(5);
+  capsulaEscolhida(6);
 
   /* USER CODE END 2 */
 

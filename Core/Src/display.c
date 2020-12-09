@@ -248,8 +248,8 @@ void escreve_string(char posicao, char *texto){
 			if(texto[i+1] == 181){
 				texto[i+1]=4;
 			}
+			i++;
 		}
-		tes = texto[i+1];
 		escreve_char(texto[i]);
 		i++;
 	}

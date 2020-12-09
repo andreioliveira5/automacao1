@@ -97,7 +97,7 @@ void iniciar(void){
 
 
 	//Água natural em temperatura ambiente
-	strcpy(capsula[0].nome, "ÁGUA");
+	strcpy(capsula[0].nome, "água");
 	capsula[0].temperatura = 0;
 	capsula[0].tempo = 2550; //tempo em ms com o tempo da bomba diminuido
 	capsula[0].gas = 0;
@@ -105,7 +105,7 @@ void iniciar(void){
 	capsula[0].gast =0;
 
 	//Água natural aquecida
-	strcpy(capsula[1].nome, "ÁGUA QUENTE"); // nome da bebida
+	strcpy(capsula[1].nome, "agua quente"); // nome da bebida
 	capsula[1].temperatura = 60; //temperatura desejada
 	capsula[1].tempo = 2550; //tempo em ms com o tempo da bomba diminuido
 	capsula[1].gas = 0; // sem gas
@@ -113,7 +113,7 @@ void iniciar(void){
 	capsula[1].gast =0; // sem gas
 
 	//Água natural resfriada
-	strcpy(capsula[2].nome, "ÁGUA GELADA");
+	strcpy(capsula[2].nome, "água gelada");
 	capsula[2].temperatura = 15;
 	capsula[2].tempo = 2550; //tempo em ms com o tempo da bomba diminuido
 	capsula[2].gas = 0; //sem gas
@@ -121,7 +121,7 @@ void iniciar(void){
 	capsula[2].gast =0; // sem gas
 
 	//Água com gás
-	strcpy(capsula[3].nome, "ÁGUA COM GÁS");
+	strcpy(capsula[3].nome, "água com gás");
 	capsula[3].temperatura = 15;
 	capsula[3].tempo = 1050; //tempo em ms com o tempo da bomba diminuido
 	capsula[3].gas = 1; //COM GAS
@@ -129,7 +129,7 @@ void iniciar(void){
 	capsula[3].gast =1300; //1,5 SEGUNDOS - 200 MS DA BOMBA
 
 	//Chá gelado
-	strcpy(capsula[4].nome, "CHÁ GELADO");
+	strcpy(capsula[4].nome, "chá gelado");
 	capsula[4].temperatura = 20;
 	capsula[4].tempo = 2250; //2,7 segundos - 450 ms da bomba
 	capsula[4].gas = 0; //SEM GAS
@@ -137,7 +137,7 @@ void iniciar(void){
 	capsula[4].gast =0; // SEM GAS
 
 	//Chá quente
-	strcpy(capsula[5].nome, "CHÁ QUENTE");
+	strcpy(capsula[5].nome, "chá quente");
 	capsula[5].temperatura = 60;
 	capsula[5].tempo = 2250; //2,7S -450 MS DA BOMBA
 	capsula[5].gas = 0;
@@ -145,7 +145,7 @@ void iniciar(void){
 	capsula[5].gast =0;
 
 	//Refrigerante
-	strcpy(capsula[6].nome, "REFRIGERANTE");
+	strcpy(capsula[6].nome, "refrigerante");
 	capsula[6].temperatura = 17;
 	capsula[6].tempo = (3550-2360); //4S - 450 MS DA BOMBA - TEMPO DO GAS
 	capsula[6].gas = 0;

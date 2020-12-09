@@ -16,7 +16,7 @@
 
 #ifndef INC_FUNCOES_H_
 #define INC_FUNCOES_H_
-#include "telas.h"
+
 typedef struct capsulas{
 
 	char nome[15]; //Nome para exibir no display
