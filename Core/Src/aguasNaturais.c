@@ -16,6 +16,7 @@ void aguaNatural(void){
 		HAL_GPIO_WritePin(GPIOA, Y3, GPIO_PIN_SET);
 		bomba(0);
 		HAL_GPIO_WritePin(GPIOA, Y3, GPIO_PIN_RESET);
+		final();
 	}
 }
 

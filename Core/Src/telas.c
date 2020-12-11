@@ -20,15 +20,29 @@ void resfriando(void){
 }
 
 void menuAgua(void){
-	int8_t valor;
+	int8_t valor, aux;
 	limpar();
 	escreve_string(0x80, "Natural");
 	escreve_string(0xc0, "Conf.| + - |Sair");
 	while(1){
 		valor = botoes();
+		if(aux==1 && valor ==2)
 		switch(valor){
 		case 1:
-			bomba(0);
+			aguaNatural();
+			break;
+		case 2:
+			if(aux==0){
+				agua
+				aux=1;
+			}
+			break;
+		case 3:
+
+			break;
+		case 4:
+			relogio();
+			break;
 		}
 	}
 }
@@ -157,8 +171,6 @@ void capsulaEscolhida(int8_t tipo){
 	}
 }
 
-void final(void);
-
 void filtroSaturado(void){
 	limpar();
 	escreve_string(0x80, "Filtro saturado");
@@ -213,4 +225,11 @@ void relogio(void){
 	}else{
 		//relogio
 	}
+}
+
+void aguagEescrita(void){
+	escreve_string(0xC0, "água gelada");
+}
+void aguaqEscrita(void){
+	escreve_string(0xC0, "água quente");
 }
