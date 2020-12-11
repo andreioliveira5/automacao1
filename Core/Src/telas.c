@@ -20,25 +20,38 @@ void resfriando(void){
 }
 
 void menuAgua(void){
-	int8_t valor, aux;
+	int8_t valor, aux, aux2;
 	limpar();
 	escreve_string(0x80, "Natural");
 	escreve_string(0xc0, "Conf.| + - |Sair");
+	aux=aux2=0;
 	while(1){
 		valor = botoes();
-		if(aux==1 && valor ==2)
 		switch(valor){
 		case 1:
 			aguaNatural();
 			break;
 		case 2:
 			if(aux==0){
-				agua
+				aguaqEscrita();
 				aux=1;
+				aux2=0
+			}else{
+				aguagEescrita();
+				aux2=1;
+				aux=0;
 			}
 			break;
 		case 3:
-
+			if(aux2==0){
+				aguagEscrita();
+				aux2=1;
+				aux=0;
+			}else{
+				agua1Eescrita();
+				aux2=0;
+				aux=1;
+			}
 			break;
 		case 4:
 			relogio();
@@ -230,6 +243,7 @@ void relogio(void){
 void aguagEescrita(void){
 	escreve_string(0xC0, "água gelada");
 }
+
 void aguaqEscrita(void){
 	escreve_string(0xC0, "água quente");
 }
