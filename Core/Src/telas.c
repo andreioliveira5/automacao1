@@ -19,16 +19,23 @@ void resfriando(int32_t tempDesejada){
 	escreve_string(0xC0, "Temp. Final:");
 	variaveis(0xCC, tempDesejada);
 }
-
-void menuAgua(void){
+ void menuAgua(void){
 	limpar();
 	escreve_string(0x80, "temperatura");
 	escreve_string(0xc0, "Conf.| + - |Sair");
 }
 
-void misturando(void);
+void misturando(uint8_t num){
+	limpar();
+	escreve_string(0x80, "Misturando gás");
+	escreve_string(0xc0, capsula[num].nome);
+}
 
-void confirmacao(void);
+void confirmacao(void){
+	limpar();
+	escreve_string(0x80, "confirmar = C");
+	escreve_string(0xc0, "Sair = S");
+}
 
 void capsulaEscolhida(int8_t tipo){
 	switch (tipo){
@@ -179,4 +186,13 @@ void CO2Saturado(void){
 	HAL_Delay(300);
 	escreve_string(0x80, "CO2 vazio");
 	HAL_Delay(1000);
+}
+
+void final(void){
+	escreve_string(0x80, "Sua bebida esta");
+	escreve_string(0xc5, "pronta!");
+}
+
+void relogio(void){
+
 }

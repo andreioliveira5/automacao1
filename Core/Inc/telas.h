@@ -20,7 +20,7 @@ void resfriando(int32_t tempInicia);
 
 void menuAgua(void);
 
-void misturando(void);
+void misturando(uint8_t num);
 
 void confirmacao(void);
 
@@ -31,3 +31,7 @@ void final(void);
 void filtroSaturado(void);
 
 void CO2Saturado(void);
+
+void final(void);
+
+void relogio(void);

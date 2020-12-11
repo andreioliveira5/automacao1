@@ -180,3 +180,19 @@ void bombaGas(int8_t tipo){
 		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
 	}
 
+uint8_t botoes(void){
+	if(HAL_GPIO_ReadPin(GPIOA, canc)==0){
+
+	}
+	if(HAL_GPIO_ReadPin(GPIOA, mais)==0){
+
+	}
+	if(HAL_GPIO_ReadPin(GPIOA, menos)==0){
+
+	}
+	if(HAL_GPIO_ReadPin(GPIOA, sair)==0){
+
+	}
+}
+
+

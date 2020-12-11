@@ -6,3 +6,4 @@ funcoes.c:92:6:calibrar	8	static
 funcoes.c:96:6:iniciar	8	static
 funcoes.c:156:6:pressostadoCO2	8	static
 funcoes.c:160:6:bombaGas	24	static
+funcoes.c:183:9:botoes	8	static

@@ -43,6 +43,13 @@ typedef struct capsulas{
 #define Y2 GPIO_PIN_4 // VALVULA Y2 - PORTA A4
 #define P2 GPIO_PIN_6 //PRESSOSTADO DO CO2
 #define Y4 GPIO_PIN_7 //VALVULA Y4 CO2
+#define canc GPIO_PIN_9
+#define mais GPIO_PIN_10
+#define menos GPIO_PIN_11
+#define sair GPIO_PIN_12
+#define Bit1 GPIO_PIN_12 //msb
+#define Bit2 GPIO_PIN_13
+#define bit3 GPIO_PIN_14//lsb
 //variaveis do DMA
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;;
@@ -56,7 +63,7 @@ uint8_t flag;
 uint32_t adcData[NUMBER_OF_CONVERSION];
 int8_t aquecido;
 int8_t presF, presCO2;
-
+int8_t horas, minutos, segundos;
 
 capsulas capsula[8];
 
@@ -81,3 +88,5 @@ void iniciar(void);
 void pressostadoCO2(void);
 
 void bombaGas(int8_t tipo);
+
+uint8_t botoes(void);
