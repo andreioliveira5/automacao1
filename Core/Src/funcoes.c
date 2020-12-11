@@ -181,18 +181,28 @@ void bombaGas(int8_t tipo){
 	}
 
 uint8_t botoes(void){
-	if(HAL_GPIO_ReadPin(GPIOA, canc)==0){
-
+	while(1){
+		if(HAL_GPIO_ReadPin(GPIOA, canc)==0){
+			return 1;
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, mais)==0){
+			return 2;
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, menos)==0){
+			return 3;
+		}
+		if(HAL_GPIO_ReadPin(GPIOA, sair)==0){
+			return 4;
+		}
 	}
-	if(HAL_GPIO_ReadPin(GPIOA, mais)==0){
+}
 
-	}
-	if(HAL_GPIO_ReadPin(GPIOA, menos)==0){
-
-	}
-	if(HAL_GPIO_ReadPin(GPIOA, sair)==0){
-
-	}
+void lerBits(void){
+	int bit1Temporario, bit2Temporario, bit3Temporario;
+	bit1Temporario= HAL_GPIO_ReadPin(GPIOB, Bit1);
+	bit2Temporario= HAL_GPIO_ReadPin(GPIOB, Bit2);
+	bit3Temporario= HAL_GPIO_ReadPin(GPIOB, Bit3);
+	bn1 = bit1Temporario*4+ bit2Temporario*2+ bit3Temporario;
 }
 
 

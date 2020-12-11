@@ -131,10 +131,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-
-	  HAL_GPIO_TogglePin(GPIOA, GPIO_PIN_13);
-	  //aguaNatural();
-	  HAL_Delay(200);
+	 relogio();
 
 
   }

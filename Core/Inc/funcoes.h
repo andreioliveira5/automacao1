@@ -49,7 +49,7 @@ typedef struct capsulas{
 #define sair GPIO_PIN_12
 #define Bit1 GPIO_PIN_12 //msb
 #define Bit2 GPIO_PIN_13
-#define bit3 GPIO_PIN_14//lsb
+#define Bit3 GPIO_PIN_14//lsb
 //variaveis do DMA
 ADC_HandleTypeDef hadc1;
 DMA_HandleTypeDef hdma_adc1;;
@@ -64,6 +64,7 @@ uint32_t adcData[NUMBER_OF_CONVERSION];
 int8_t aquecido;
 int8_t presF, presCO2;
 int8_t horas, minutos, segundos;
+int8_t bn1;
 
 capsulas capsula[8];
 
