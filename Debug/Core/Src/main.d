@@ -26,7 +26,9 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
  ../Core/Inc/aguasNaturais.h ../Core/Inc/funcoes.h ../Core/Inc/main.h \
- ../Core/Inc/funcoes.h ../Core/Inc/bebidasGaseificadas.h
+ ../Core/Inc/telas.h ../Core/Inc/display.h ../Core/Inc/aguasNaturais.h \
+ ../Core/Inc/bebidasGaseificadas.h ../Core/Inc/funcoes.h \
+ ../Core/Inc/bebidasGaseificadas.h
 
 ../Core/Inc/main.h:
 
@@ -87,6 +89,14 @@ Core/Src/main.o: ../Core/Src/main.c ../Core/Inc/main.h \
 ../Core/Inc/funcoes.h:
 
 ../Core/Inc/main.h:
+
+../Core/Inc/telas.h:
+
+../Core/Inc/display.h:
+
+../Core/Inc/aguasNaturais.h:
+
+../Core/Inc/bebidasGaseificadas.h:
 
 ../Core/Inc/funcoes.h:
 

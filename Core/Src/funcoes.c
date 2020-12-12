@@ -35,6 +35,7 @@ void aquecer(int32_t temperatura){
 	int8_t i, j;
 	int32_t adc1, t1=0, t1f=0, erro;
 	int32_t pwm = 500, kp =27;
+	aquecendo();
 	do{
 		for(i=0; i<4; i++){
 			HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSION);
@@ -48,8 +49,9 @@ void aquecer(int32_t temperatura){
 			t1=adc1;
 		}
 		t1 /= 4;
-		t1f = t1*graus+5; //testar o maximo
+		t1f = t1*graus+5;
 		if(t1f>100)t1f = 100;
+		variaveis(0xCD, t1f);
 		erro = temperatura - t1f;
 		if(erro > 0){
 			TIM2->CCR2 = pwm+(erro*kp);
@@ -64,6 +66,7 @@ void resfriar(int32_t temperatura){
 	int8_t i, j;
 	int32_t adc2, t2, t2f, erro;
 	int32_t pwm = 50, kp =4;
+	resfriando();
 	do{
 		for(i=0; i<4; i++){
 			HAL_ADC_Start_DMA(&hadc1, adcData, NUMBER_OF_CONVERSION);
@@ -79,6 +82,7 @@ void resfriar(int32_t temperatura){
 		t2 /= 4;
 		t2f = t2*graus+5; //testar o maximo
 		if(t2f>50)t2f = 50;
+		variaveis(0xCD, t2f);
 		erro = t2f - temperatura;
 		if(erro > 0){
 			TIM2->CCR3 = pwm+(erro*kp);
@@ -94,7 +98,7 @@ void calibrar (void){
 }
 
 void iniciar(void){
-
+	char aux[2];
 
 	//Água natural em temperatura ambiente
 	strcpy(capsula[0].nome, "água");
@@ -151,6 +155,13 @@ void iniciar(void){
 	capsula[6].gas = 0;
 	capsula[6].tipo = 2;
 	capsula[6].gast =2360;
+
+	strcpy(aux, __TIME__);
+	horas= atoi(aux);
+	strcpy(aux, __TIME__ +3);
+	minutos = atoi(aux);
+	strcpy(aux, __TIME__+6);
+	segundos = atoi(aux);
 }
 
 void pressostadoCO2(void){
@@ -160,7 +171,8 @@ void pressostadoCO2(void){
 void bombaGas(int8_t tipo){
 	int16_t i;
 		int16_t contador = 0;
-
+		limpar();
+		escreve_string(0x80, "Misturando...");
 		HAL_GPIO_WritePin(GPIOA, Y4, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_SET);
 		for(i=0; i < 200; i++){// aceleração
@@ -186,7 +198,6 @@ uint8_t botoes(void){
 			return 1;
 		}
 		if(HAL_GPIO_ReadPin(GPIOA, mais)==0){
-			int teste = 14;
 			return 2;
 		}
 		if(HAL_GPIO_ReadPin(GPIOA, menos)==0){

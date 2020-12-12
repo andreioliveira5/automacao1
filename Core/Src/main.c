@@ -114,8 +114,8 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   HAL_TIM_Base_Start_IT(&htim3);
   HAL_TIM_Base_Start_IT(&htim4);
-  inicializa();
   iniciar();
+  inicializa();
   limpar();
   /* USER CODE END 2 */
 

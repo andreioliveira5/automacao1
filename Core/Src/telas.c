@@ -20,11 +20,11 @@ void resfriando(void){
 }
 
 void menuAgua(void){
-	int8_t valor, aux, aux2;
+	int8_t valor, aux2;
 	limpar();
 	escreve_string(0x80, "Natural");
 	escreve_string(0xc0, "Conf.| + - |Sair");
-	aux=aux2=0;
+	aux2=0;
 	while(1){
 		valor = botoes();
 		switch(valor){
@@ -80,7 +80,7 @@ void capsulaEscolhida(int8_t tipo){
 		if(valor == 1){
 			menuAgua();
 		}else if(valor==4){
-			relogio();
+			sairEscrever();
 		}else{
 			valor = botoes();
 		}
@@ -103,10 +103,18 @@ void capsulaEscolhida(int8_t tipo){
 		HAL_Delay(300);
 		escreve_string(0x82, capsula[3].nome);
 		confirmacao();
-		HAL_Delay(4000);
 
-		//confirmacao();
+		valor=botoes();
+
+		if(valor == 1){
+			aguaComGas();
+		}else if(valor==4){
+			sairEscrever();
+		}else{
+			valor = botoes();
+		}
 		break;
+
 	case 3:
 		limpar();
 		escreve_string(0x83, capsula[4].nome);
@@ -123,9 +131,16 @@ void capsulaEscolhida(int8_t tipo){
 		HAL_Delay(300);
 		escreve_string(0x83, capsula[4].nome);
 		confirmacao();
-		HAL_Delay(4000);
 
 		valor = botoes();
+
+		if(valor == 1){
+			chaGelado();
+		}else if(valor==4){
+			sairEscrever();
+		}else{
+			valor = botoes();
+		}
 		break;
 	case 4:
 		limpar();
@@ -143,8 +158,17 @@ void capsulaEscolhida(int8_t tipo){
 		HAL_Delay(300);
 		escreve_string(0x83, capsula[5].nome);
 		confirmacao();
-		HAL_Delay(4000);
 
+
+		valor = botoes();
+
+		if(valor == 1){
+			chaQuente();
+		}else if(valor==4){
+			sairEscrever();
+		}else{
+			valor = botoes();
+		}
 		break;
 	case 5:
 		limpar();
@@ -162,12 +186,24 @@ void capsulaEscolhida(int8_t tipo){
 		HAL_Delay(300);
 		escreve_string(0x82, capsula[6].nome);
 		confirmacao();
-		HAL_Delay(4000);
 
+
+		valor = botoes();
+
+		if(valor == 1){
+			refrigerante();
+		}else if(valor==4){
+			sairEscrever();
+		}else{
+			valor = botoes();
+		}
 		break;
-	case 6:
+	default:
 		limpar();
 		escreve_string(0x80, "Capsula vazia");
+		HAL_Delay(5000);
+		limpar();
+		relogio();
 		break;
 	}
 }
@@ -219,13 +255,14 @@ void final(void){
 	escreve_string(0x80, "Sua bebida esta");
 	escreve_string(0xc5, "pronta!");
 	HAL_Delay(5000);
+	limpar();
 	relogio();
 }
 
 void relogio(void){
 	while (1){
 		lerBits();
-		if(bn1 !=0){
+		if(bn1 >= 1){
 			capsulaEscolhida(bn1);
 		}else{
 			if(horas < 10){
@@ -268,6 +305,7 @@ void sairEscrever(void){
 	limpar();
 	escreve_string(0x80, "Retire a capsula");
 	HAL_Delay(5000);
+	limpar();
 }
 
 void aguanEscrita(void){

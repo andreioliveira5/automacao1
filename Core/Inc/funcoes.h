@@ -13,6 +13,7 @@
 #include <time.h>
 #include <string.h>
 #include "main.h"
+#include "telas.h"
 
 #ifndef INC_FUNCOES_H_
 #define INC_FUNCOES_H_
