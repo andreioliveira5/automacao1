@@ -29,33 +29,22 @@ void menuAgua(void){
 		valor = botoes();
 		switch(valor){
 		case 1:
-			aguaNatural();
-			break;
-		case 2:
-			if(aux==0){
-				aguaqEscrita();
-				aux=1;
-				aux2=0
-			}else{
-				aguagEescrita();
-				aux2=1;
-				aux=0;
-			}
-			break;
-		case 3:
-			if(aux2==0){
-				aguagEscrita();
-				aux2=1;
-				aux=0;
-			}else{
-				agua1Eescrita();
-				aux2=0;
-				aux=1;
-			}
+			if(aux2 == 0 ) aguaNatural();
+			if(aux2 == 1 ) aguaQuente();
+			if(aux2 == 2 ) aguaGelada();
 			break;
 		case 4:
+			sairEscrever();
 			relogio();
 			break;
+		default:
+			if(valor == 2)aux2++;
+			if(valor == 3)aux2--;
+			if(aux2== 3)aux2=0;
+			if(aux2== -1)aux2=2;
+			if(aux2==0)aguanEscrita();
+			if(aux2==2)aguagEscrita();
+			if(aux2==1)aguaqEscrita();
 		}
 	}
 }
@@ -87,7 +76,6 @@ void capsulaEscolhida(int8_t tipo){
 		HAL_Delay(300);
 		escreve_string(0x86, capsula[0].nome);
 		confirmacao();
-		HAL_Delay(4000);
 		valor = botoes();
 		if(valor == 1){
 			menuAgua();
@@ -227,23 +215,64 @@ void CO2Saturado(void){
 }
 
 void final(void){
+	limpar();
 	escreve_string(0x80, "Sua bebida esta");
 	escreve_string(0xc5, "pronta!");
+	HAL_Delay(5000);
+	relogio();
 }
 
 void relogio(void){
-	lerBits();
-	if(bn1 !=0){
+	while (1){
+		lerBits();
+		if(bn1 !=0){
+			capsulaEscolhida(bn1);
+		}else{
+			if(horas < 10){
+				escreve_string(0x84, "0");
+				variaveis(0x85, horas);
 
-	}else{
-		//relogio
+			}else{
+				variaveis(0x84, horas);
+			}
+			escreve_string(0x86, ":");
+			if(minutos < 10){
+				escreve_string(0x87, "0");
+				variaveis(0x88, minutos);
+			}else{
+				variaveis(0x87, minutos);
+			}
+			escreve_string(0x89, ":");
+			if(segundos < 10){
+				escreve_string(0x8A, "0");
+				variaveis(0x8B, segundos);
+			}else{
+				variaveis(0x8A, segundos);
+			}
+		}
 	}
 }
-
-void aguagEescrita(void){
-	escreve_string(0xC0, "água gelada");
+void aguagEscrita(void){
+	limpar();
+	escreve_string(0x80, "agua gelada  ");
+	escreve_string(0xc0, "Conf.| + - |Sair");
 }
 
 void aguaqEscrita(void){
-	escreve_string(0xC0, "água quente");
+	limpar();
+	escreve_string(0x80, "agua quente   ");
+	escreve_string(0xc0, "Conf.| + - |Sair");
+	}
+
+void sairEscrever(void){
+	limpar();
+	escreve_string(0x80, "Retire a capsula");
+	HAL_Delay(5000);
 }
+
+void aguanEscrita(void){
+	limpar();
+	escreve_string(0x80, "agua natural    ");
+	escreve_string(0xc0, "Conf.| + - |Sair");
+}
+

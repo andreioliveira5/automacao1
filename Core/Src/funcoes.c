@@ -186,6 +186,7 @@ uint8_t botoes(void){
 			return 1;
 		}
 		if(HAL_GPIO_ReadPin(GPIOA, mais)==0){
+			int teste = 14;
 			return 2;
 		}
 		if(HAL_GPIO_ReadPin(GPIOA, menos)==0){

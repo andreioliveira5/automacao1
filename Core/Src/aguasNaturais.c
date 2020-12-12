@@ -29,6 +29,7 @@ void aguaQuente(void){
 		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_SET);
 		bomba(1);
 		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_RESET);
+		final();
 	}
 }
 
@@ -41,6 +42,7 @@ void aguaGelada(void){
 			HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
 			bomba(2);
 			HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
+			final();
 		}
 }
 
@@ -53,6 +55,7 @@ void chaGelado(void){
 		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
 		bomba(4);
 		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
+		final();
 	}
 }
 
@@ -65,5 +68,6 @@ void chaQuente(void){
 		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_SET);
 		bomba(5);
 		HAL_GPIO_WritePin(GPIOA, Y1, GPIO_PIN_RESET);
+		final();
 	}
 }

@@ -26,6 +26,7 @@
 #include "funcoes.h"
 #include "bebidasGaseificadas.h"
 #include <stdio.h>
+//#include "telas.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -115,13 +116,7 @@ int main(void)
   HAL_TIM_Base_Start_IT(&htim4);
   inicializa();
   iniciar();
-  capsulaEscolhida(1);
-  capsulaEscolhida(2);
-  capsulaEscolhida(3);
-  capsulaEscolhida(4);
-  capsulaEscolhida(5);
-  capsulaEscolhida(6);
-
+  limpar();
   /* USER CODE END 2 */
 
   /* Infinite loop */

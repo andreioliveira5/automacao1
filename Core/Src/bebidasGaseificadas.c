@@ -18,6 +18,7 @@ void aguaComGas(void){
 		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
 		bombaGas(3);
 		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
+		final();
 	}
 }
 
@@ -33,5 +34,6 @@ void refrigerante(void){
 		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_SET);
 		bombaGas(6);
 		HAL_GPIO_WritePin(GPIOA, Y2, GPIO_PIN_RESET);
+		final();
 	}
 }

@@ -11,12 +11,14 @@
 #include <stdio.h>
 #include "display.h"
 #include "funcoes.h"
+#include "aguasNaturais.h"
+#include "bebidasGaseificadas.h"
 
 #endif /* INC_TELAS_H_ */
 
-void aquecendo(int32_t tempInicial);
+void aquecendo(void);
 
-void resfriando(int32_t tempInicia);
+void resfriando(void);
 
 void menuAgua(void);
 
@@ -35,3 +37,11 @@ void CO2Saturado(void);
 void final(void);
 
 void relogio(void);
+
+void aguagEscrita(void);
+
+void aguaqEscrita(void);
+
+void sairEscrever(void);
+
+void aguanEscrita(void);
