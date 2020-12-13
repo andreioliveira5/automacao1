@@ -8,7 +8,7 @@ telas.c:252:6:filtroSaturado	8	static
 telas.c:278:6:CO2Saturado	8	static
 telas.c:304:6:final	8	static
 telas.c:318:6:relogio	8	static
-telas.c:354:6:aguagEscrita	8	static
-telas.c:364:6:aguaqEscrita	8	static
-telas.c:375:6:sairEscrever	8	static
-telas.c:386:6:aguanEscrita	8	static
+telas.c:355:6:aguagEscrita	8	static
+telas.c:365:6:aguaqEscrita	8	static
+telas.c:376:6:sairEscrever	8	static
+telas.c:387:6:aguanEscrita	8	static

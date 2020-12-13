@@ -26,6 +26,7 @@
 #include "funcoes.h"
 #include "bebidasGaseificadas.h"
 #include <stdio.h>
+#include <time.h>
 //#include "telas.h"
 /* USER CODE END Includes */
 
@@ -82,7 +83,7 @@ static void MX_TIM4_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-
+	char aux[2];
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -108,13 +109,20 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM3_Init();
   MX_TIM4_Init();
+  HAL_TIM_Base_Start_IT(&htim3);
+  HAL_TIM_Base_Start_IT(&htim4);
+  horas=minutos=segundos=0;
+	strcpy(aux, __TIME__);
+	horas= atoi(aux);
+	strcpy(aux, __TIME__ +3);
+	minutos = atoi(aux);
+	strcpy(aux, __TIME__+6);
+	segundos = atoi(aux);
+  iniciar();// Inicializa as variaveis das capsulas
   /* USER CODE BEGIN 2 */
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_1);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_2);
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
-  HAL_TIM_Base_Start_IT(&htim3);
-  HAL_TIM_Base_Start_IT(&htim4);
-  iniciar();// Inicializa as variaveis das capsulas
   inicializa(); // Inicializa o display
   limpar(); // limpa o display
   /* USER CODE END 2 */

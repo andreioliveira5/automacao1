@@ -3,8 +3,8 @@ funcoes.c:24:6:bomba	24	static
 funcoes.c:49:6:aquecer	56	static
 funcoes.c:85:6:resfriar	56	static
 funcoes.c:120:6:calibrar	8	static
-funcoes.c:129:6:iniciar	24	static
-funcoes.c:196:6:pressostadoCO2	8	static
-funcoes.c:206:6:bombaGas	24	static
-funcoes.c:240:9:botoes	8	static
-funcoes.c:263:6:lerBits	24	static
+funcoes.c:129:6:iniciar	8	static
+funcoes.c:189:6:pressostadoCO2	8	static
+funcoes.c:199:6:bombaGas	24	static
+funcoes.c:233:9:botoes	8	static
+funcoes.c:256:6:lerBits	24	static

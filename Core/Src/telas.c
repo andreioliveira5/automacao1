@@ -342,6 +342,7 @@ void relogio(void){
 			}else{
 				variaveis(0x8A, segundos);
 			}
+			escreve_string(0x8C, "    ");
 		}
 	}
 }

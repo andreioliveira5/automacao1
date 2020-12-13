@@ -61,7 +61,7 @@ void aquecer(int32_t temperatura){
 				adc1+= adcData[i];
 			}
 			adc1/= (NUMBER_OF_CONVERSION/2);
-			t1=adc1;
+			t1+=adc1;
 		}
 		t1 /= 4;
 		t1f = t1*graus+5;
@@ -97,7 +97,7 @@ void resfriar(int32_t temperatura){
 				adc2+= adcData[i+8];
 			}
 			adc2/= (NUMBER_OF_CONVERSION/2);
-			t2=adc2;
+			t2+=adc2;
 		}
 		t2 /= 4;
 		t2f = t2*graus+5; //testar o maximo
@@ -127,7 +127,7 @@ void calibrar (void){
  * Essa função é responsavel por iniciar os valores das capsulas e o timer do relogio
  */
 void iniciar(void){
-	char aux[2];
+
 
 	//Água natural em temperatura ambiente
 	strcpy(capsula[0].nome, "água");
@@ -184,13 +184,6 @@ void iniciar(void){
 	capsula[6].gas = 0;
 	capsula[6].tipo = 2;
 	capsula[6].gast =2360;
-
-	strcpy(aux, __TIME__);
-	horas= atoi(aux);
-	strcpy(aux, __TIME__ +3);
-	minutos = atoi(aux);
-	strcpy(aux, __TIME__+6);
-	segundos = atoi(aux);
 }
 
 void pressostadoCO2(void){
