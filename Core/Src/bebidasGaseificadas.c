@@ -6,6 +6,13 @@
  */
 #include "bebidasGaseificadas.h"
 
+
+/**
+ * @brief Água com gás
+ *
+ *
+ * Essa função é reponsavel por gerenciar as funções necessarias para a produção de agua com gás gelada.
+ */
 void aguaComGas(void){
 	pressostatoFiltro();
 	pressostadoCO2();
@@ -22,8 +29,12 @@ void aguaComGas(void){
 	}
 }
 
-
-
+/**
+ * @brief Refrigerante
+ *
+ *
+ * Essa função é reponsavel por gerenciar as funções necessarias para a produção de refrigerante.
+ */
 void refrigerante(void){
 	pressostatoFiltro();
 	pressostadoCO2();

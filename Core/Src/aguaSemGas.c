@@ -5,9 +5,15 @@
  *      Author: andre
  */
 
-#include "aguasNaturais.h"
+#include <aguaSemGas.h>
 
 
+/**
+ * @brief Água temperatura ambiente
+ *
+ *
+ * Essa função é reponsavel por gerenciar as funções necessarias para a produção de agua sem gás em temperatura ambiente.
+ */
 void aguaNatural(void){
 	pressostatoFiltro();
 	if(presF == 0){
@@ -22,6 +28,11 @@ void aguaNatural(void){
 	}
 }
 
+/**
+ * @brief Água quente
+ *
+ * Essa função é responsavel por gerenciar as funções para a produção de agua quente.
+ */
 void aguaQuente(void){
 	pressostatoFiltro();
 	if(presF == 0){
@@ -37,6 +48,11 @@ void aguaQuente(void){
 	}
 }
 
+/**
+ * @brief Água gelada
+ *
+ * Essa função é responsavel por gerenciar as funções para a produção de agua gelada
+ */
 void aguaGelada(void){
 	pressostatoFiltro();
 		if(presF == 0){
@@ -52,6 +68,11 @@ void aguaGelada(void){
 		}
 }
 
+/**
+ * @brief Chá Gelado
+ *
+ *Essa função é responsavel por gerenciar as funções para a produção de chá gelado
+ */
 void chaGelado(void){
 	pressostatoFiltro();
 	if(presF ==0){
@@ -67,6 +88,11 @@ void chaGelado(void){
 	}
 }
 
+/**
+ * @brief Chá Quente
+ *
+ *Essa função é responsavel por gerenciar as funções para a produção de chá quente
+ */
 void chaQuente(void){
 	pressostatoFiltro();
 	if(presF ==0){
