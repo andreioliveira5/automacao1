@@ -255,6 +255,12 @@ void escreve_string(char posicao, char *texto){
 	}
 }
 
+
+/**
+ * @brief Escreve variaveis int
+ *
+ * Essa função é responsavel por escrever as variaveis no display
+ */
 void variaveis (char posicao, int32_t valor){
 	uint16_t i=0;
 	char texto[17];

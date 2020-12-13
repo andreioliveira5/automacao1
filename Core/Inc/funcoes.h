@@ -18,6 +18,9 @@
 #ifndef INC_FUNCOES_H_
 #define INC_FUNCOES_H_
 
+/**
+ * Estrutura para as capsulas
+ */
 typedef struct capsulas{
 
 	char nome[15]; //Nome para exibir no display
@@ -34,8 +37,8 @@ typedef struct capsulas{
 
 /*-----Defines utilizados----*/
 
-#define NUMBER_OF_CONVERSION 16
-#define graus ((3.3/4095)/0.005)
+#define NUMBER_OF_CONVERSION 16 // NUMERO DE CONVERSÕES DO ADC
+#define graus ((3.3/4095)/0.005) // CALCULO DE CONVERSÃO DO VALOR DE LEITURA DO DMA PARA USO NOS PWM
 
 #define P1  GPIO_PIN_11 // PRESSOSTATO DA SAIDA DE AGUA - PORTA B11
 #define Y3  GPIO_PIN_5 //VALVULA DE AGUA NATURAL SEM AQUECIMENTO OU RESFRIAMENTO - PORTA A5
@@ -44,30 +47,30 @@ typedef struct capsulas{
 #define Y2 GPIO_PIN_4 // VALVULA Y2 - PORTA A4
 #define P2 GPIO_PIN_6 //PRESSOSTADO DO CO2
 #define Y4 GPIO_PIN_7 //VALVULA Y4 CO2
-#define canc GPIO_PIN_9
-#define mais GPIO_PIN_10
-#define menos GPIO_PIN_11
-#define sair GPIO_PIN_12
-#define Bit1 GPIO_PIN_12 //msb
-#define Bit2 GPIO_PIN_13
-#define Bit3 GPIO_PIN_14//lsb
+#define canc GPIO_PIN_9 // PINO DO BOTÃO DE CONFIRMAR  = port A9
+#define mais GPIO_PIN_10 // PINO DO BOTÃO DE MAIS = PORTA A10
+#define menos GPIO_PIN_11 //PINO DE BOTÃO DE MENOS = PORTA A11
+#define sair GPIO_PIN_12 // PINO DE BOTÃSO DE SAIR - PORTA A12
+#define Bit1 GPIO_PIN_12 //BIT MAIS SIGNIFICATIVO
+#define Bit2 GPIO_PIN_13 //BIT DO MEIO
+#define Bit3 GPIO_PIN_14//BIT MENOS SIGNIFICATIVO
 //variaveis do DMA
 ADC_HandleTypeDef hadc1;
-DMA_HandleTypeDef hdma_adc1;;
+DMA_HandleTypeDef hdma_adc1;
 
 //variaveis globais de definição;
 
 
-int32_t Vsense;
-float temperatura;
-uint8_t flag;
-uint32_t adcData[NUMBER_OF_CONVERSION];
-int8_t aquecido;
-int8_t presF, presCO2;
-int8_t horas, minutos, segundos;
-int8_t bn1;
+//int32_t Vsense;
+//float temperatura;
+uint8_t flag; // flag do dma
+uint32_t adcData[NUMBER_OF_CONVERSION]; // vetor para armazenamento da leitura do dma
+//int8_t aquecido;
+int8_t presF, presCO2; // variaveis dos pressostatos do filtro é co2
+int8_t horas, minutos, segundos; // variaveis do relogio
+int8_t bn1; //variaveis de leitura da bomba
 
-capsulas capsula[8];
+capsulas capsula[8]; //variavel do tipo capsulas para armazenar as capsulas
 
 //variais para usar nas funções de entrada e saida
 

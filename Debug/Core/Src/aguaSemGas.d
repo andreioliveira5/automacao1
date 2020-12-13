@@ -1,5 +1,5 @@
-Core/Src/aguasNaturais.o: ../Core/Src/aguasNaturais.c \
- ../Core/Inc/aguasNaturais.h ../Core/Inc/funcoes.h ../Core/Inc/main.h \
+Core/Src/aguaSemGas.o: ../Core/Src/aguaSemGas.c ../Core/Inc/aguaSemGas.h \
+ ../Core/Inc/funcoes.h ../Core/Inc/main.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal.h \
  ../Core/Inc/stm32f1xx_hal_conf.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_rcc.h \
@@ -26,10 +26,10 @@ Core/Src/aguasNaturais.o: ../Core/Src/aguasNaturais.c \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_pwr.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim.h \
  ../Drivers/STM32F1xx_HAL_Driver/Inc/stm32f1xx_hal_tim_ex.h \
- ../Core/Inc/telas.h ../Core/Inc/display.h ../Core/Inc/aguasNaturais.h \
+ ../Core/Inc/telas.h ../Core/Inc/display.h \
  ../Core/Inc/bebidasGaseificadas.h
 
-../Core/Inc/aguasNaturais.h:
+../Core/Inc/aguaSemGas.h:
 
 ../Core/Inc/funcoes.h:
 
@@ -90,7 +90,5 @@ Core/Src/aguasNaturais.o: ../Core/Src/aguasNaturais.c \
 ../Core/Inc/telas.h:
 
 ../Core/Inc/display.h:
-
-../Core/Inc/aguasNaturais.h:
 
 ../Core/Inc/bebidasGaseificadas.h:

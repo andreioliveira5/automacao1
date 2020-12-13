@@ -114,9 +114,9 @@ int main(void)
   HAL_TIM_PWM_Start(&htim2, TIM_CHANNEL_3);
   HAL_TIM_Base_Start_IT(&htim3);
   HAL_TIM_Base_Start_IT(&htim4);
-  iniciar();
-  inicializa();
-  limpar();
+  iniciar();// Inicializa as variaveis das capsulas
+  inicializa(); // Inicializa o display
+  limpar(); // limpa o display
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -126,7 +126,7 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-	 relogio();
+	 relogio(); // chama o relogio
 
 
   }
@@ -558,6 +558,8 @@ static void MX_GPIO_Init(void)
 /* USER CODE BEGIN 4 */
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
+	/**Testa qual timer gerou a interupção se for o timer 3, adiciona 1s ao timer do relogio
+	 * Se timer 4 pisca o led da placa, C13**/
 	if(htim == &htim3){
 		segundos++;
 		if(segundos == 60){
@@ -577,6 +579,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	}
 }
 
+//Libera a flag para leitura do DMA
 void HAL_ADC_ConvCpltCallback(ADC_HandleTypeDef* hadc){
 	flag=1;
 }

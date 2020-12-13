@@ -7,5 +7,5 @@ main.c:438:13:MX_TIM4_Init	32	static
 main.c:481:13:MX_DMA_Init	16	static
 main.c:499:13:MX_GPIO_Init	40	static
 main.c:559:6:HAL_TIM_PeriodElapsedCallback	16	static
-main.c:580:6:HAL_ADC_ConvCpltCallback	16	static
-main.c:589:6:Error_Handler	4	static
+main.c:583:6:HAL_ADC_ConvCpltCallback	16	static
+main.c:592:6:Error_Handler	4	static

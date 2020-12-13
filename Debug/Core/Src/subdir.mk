@@ -4,7 +4,7 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Core/Src/aguasNaturais.c \
+../Core/Src/aguaSemGas.c \
 ../Core/Src/bebidasGaseificadas.c \
 ../Core/Src/display.c \
 ../Core/Src/funcoes.c \
@@ -17,7 +17,7 @@ C_SRCS += \
 ../Core/Src/telas.c 
 
 OBJS += \
-./Core/Src/aguasNaturais.o \
+./Core/Src/aguaSemGas.o \
 ./Core/Src/bebidasGaseificadas.o \
 ./Core/Src/display.o \
 ./Core/Src/funcoes.o \
@@ -30,7 +30,7 @@ OBJS += \
 ./Core/Src/telas.o 
 
 C_DEPS += \
-./Core/Src/aguasNaturais.d \
+./Core/Src/aguaSemGas.d \
 ./Core/Src/bebidasGaseificadas.d \
 ./Core/Src/display.d \
 ./Core/Src/funcoes.d \
@@ -44,8 +44,8 @@ C_DEPS += \
 
 
 # Each subdirectory must supply rules for building sources it contributes
-Core/Src/aguasNaturais.o: ../Core/Src/aguasNaturais.c
-	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/aguasNaturais.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
+Core/Src/aguaSemGas.o: ../Core/Src/aguaSemGas.c
+	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/aguaSemGas.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/bebidasGaseificadas.o: ../Core/Src/bebidasGaseificadas.c
 	arm-none-eabi-gcc "$<" -mcpu=cortex-m3 -std=gnu11 -g3 -DUSE_HAL_DRIVER -DSTM32F103xB -DDEBUG -c -I../Core/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc -I../Drivers/STM32F1xx_HAL_Driver/Inc/Legacy -I../Drivers/CMSIS/Device/ST/STM32F1xx/Include -I../Drivers/CMSIS/Include -O0 -ffunction-sections -fdata-sections -Wall -fstack-usage -MMD -MP -MF"Core/Src/bebidasGaseificadas.d" -MT"$@" --specs=nano.specs -mfloat-abi=soft -mthumb -o "$@"
 Core/Src/display.o: ../Core/Src/display.c

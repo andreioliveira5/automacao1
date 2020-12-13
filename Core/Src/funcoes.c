@@ -6,12 +6,21 @@
  */
 #include "funcoes.h"
 
-
+/**
+ * @brief Leitura do pressostado do filtro
+ *
+ * Essa função lê o pino P1 onde esta ligado o pressostato do filtro de agua
+ */
 void pressostatoFiltro(void){
 	presF= HAL_GPIO_ReadPin(GPIOB, P1);
 }
 
-//bebidas sem gas
+/**
+ * @brief Bomba de bebidas sem gás
+ *
+ * Essa função é responsavel por gerenciar a bomba das bebidas sem gás.
+ * @param[in] tipo :Valor corespondente ao tipo de bebida que será produzida.
+ */
 void bomba(int8_t tipo){
 	int16_t i;
 	int16_t contador = 0;
@@ -31,6 +40,12 @@ void bomba(int8_t tipo){
 		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
 }
 
+/**
+ * @brief Aquecimento
+ *
+ * Essa função é responsavel por aquecer a água para produção de bebidas quentes
+ * @param[in] temperatura :Temperatura final que a bebida deve atingir.
+ */
 void aquecer(int32_t temperatura){
 	int8_t i, j;
 	int32_t adc1, t1=0, t1f=0, erro;
@@ -59,9 +74,14 @@ void aquecer(int32_t temperatura){
 		HAL_Delay(50);
 	}while(t1f < temperatura);
 	TIM2->CCR2 =0; //???
-	aquecido = 1;
 }
 
+/**
+ * @brief Resfriamento
+ *
+ * Essa função é responsavel por resfriar a água para produção de bebidas geladas
+ * @param[in] temperatura :Temperatura final que a bebida deve atingir.
+ */
 void resfriar(int32_t temperatura){
 	int8_t i, j;
 	int32_t adc2, t2, t2f, erro;
@@ -89,14 +109,23 @@ void resfriar(int32_t temperatura){
 		}
 		HAL_Delay(50);
 	}while(t2f > temperatura);
-	TIM2->CCR3 =0; //???
-	aquecido = 1;
+	TIM2->CCR3 =0; //
 }
 
+/**
+ * @brief Calibragem do ADC
+ *
+ * Essa função é responsavel pela calibrassão do ADC do controlador
+ */
 void calibrar (void){
 	  HAL_ADCEx_Calibration_Start(&hadc1);
 }
 
+/**
+ * @brief Inicialização das capsulas
+ *
+ * Essa função é responsavel por iniciar os valores das capsulas e o timer do relogio
+ */
 void iniciar(void){
 	char aux[2];
 
@@ -168,11 +197,17 @@ void pressostadoCO2(void){
 	presCO2= HAL_GPIO_ReadPin(GPIOA, P2);
 }
 
+/**
+ * @brief Bomba de bebidas com gás
+ *
+ * Essa função é responsavel por gerenciar a bomba das bebidas com gás.
+ * @param[in] tipo :Valor corespondente ao tipo de bebida que será produzida.
+ */
 void bombaGas(int8_t tipo){
 	int16_t i;
 		int16_t contador = 0;
 		limpar();
-		escreve_string(0x80, "Misturando...");
+		misturando(tipo);
 		HAL_GPIO_WritePin(GPIOA, Y4, GPIO_PIN_SET);
 		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_SET);
 		for(i=0; i < 200; i++){// aceleração
@@ -192,6 +227,16 @@ void bombaGas(int8_t tipo){
 		HAL_GPIO_WritePin(GPIOB, SAIDA, GPIO_PIN_RESET);
 	}
 
+
+/**
+ * @brief Botões
+ *
+ *
+ * Essa função é responsavel pela leitura do teclado
+ *
+ * @retval Valores de 1 a 4 para o controle das entradas
+ *
+ */
 uint8_t botoes(void){
 	while(1){
 		if(HAL_GPIO_ReadPin(GPIOA, canc)==0){
@@ -209,6 +254,12 @@ uint8_t botoes(void){
 	}
 }
 
+
+/**
+ * @brief Leitura da capsula
+ *
+ * Essa função le os 3 bits para a seleção das capsulas
+ */
 void lerBits(void){
 	int bit1Temporario, bit2Temporario, bit3Temporario;
 	bit1Temporario= HAL_GPIO_ReadPin(GPIOB, Bit1);
