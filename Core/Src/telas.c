@@ -73,7 +73,7 @@ void menuAgua(void){
  */
 void misturando(uint8_t num){
 	limpar();
-	escreve_string(0x80, "Misturando gás");
+	escreve_string(0x80, "Misturando gas");
 	escreve_string(0xc0, capsula[num].nome);
 }
 
@@ -268,10 +268,11 @@ void filtroSaturado(void){
 	HAL_Delay(300);
 	escreve_string(0x80, "Filtro saturado");
 	HAL_Delay(1000);
+	limpar();
 }
 
 /**
- * @brief Display: CO2 Vazio
+ * @brief Display: CO2 Vazio]
  *
  * Essa função mostra quando o o cilindro de CO2 está vazio
  */
@@ -294,6 +295,7 @@ void CO2Saturado(void){
 	HAL_Delay(300);
 	escreve_string(0x80, "CO2 vazio");
 	HAL_Delay(1000);
+	limpar();
 }
 
 /**

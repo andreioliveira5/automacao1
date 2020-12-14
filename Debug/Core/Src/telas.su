@@ -5,10 +5,10 @@ telas.c:74:6:misturando	16	static
 telas.c:85:6:confirmacao	8	static
 telas.c:98:6:capsulaEscolhida	24	static
 telas.c:252:6:filtroSaturado	8	static
-telas.c:278:6:CO2Saturado	8	static
-telas.c:304:6:final	8	static
-telas.c:318:6:relogio	8	static
-telas.c:355:6:aguagEscrita	8	static
-telas.c:365:6:aguaqEscrita	8	static
-telas.c:376:6:sairEscrever	8	static
-telas.c:387:6:aguanEscrita	8	static
+telas.c:279:6:CO2Saturado	8	static
+telas.c:306:6:final	8	static
+telas.c:320:6:relogio	8	static
+telas.c:357:6:aguagEscrita	8	static
+telas.c:367:6:aguaqEscrita	8	static
+telas.c:378:6:sairEscrever	8	static
+telas.c:389:6:aguanEscrita	8	static

@@ -28,8 +28,6 @@ void confirmacao(void);
 
 void capsulaEscolhida(int8_t tipo);
 
-void final(void);
-
 void filtroSaturado(void);
 
 void CO2Saturado(void);
